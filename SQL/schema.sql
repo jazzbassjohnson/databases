@@ -1,5 +1,5 @@
-CREATE DATABASE chat19;
-USE chat19;
+CREATE DATABASE chat;
+USE chat;
 
 
 DROP TABLE IF EXISTS rooms;
