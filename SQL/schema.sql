@@ -1,48 +1,33 @@
-CREATE DATABASE chat;
+CREATE DATABASE chat19;
+USE chat19;
 
-USE chat;
 
-DROP TABLE IF EXISTS `rooms`
-CREATE TABLE `rooms`
+DROP TABLE IF EXISTS rooms;
+CREATE TABLE rooms
 (
-  `room_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `room_name` varchar(20)
+id_room int(10) NOT NULL AUTO_INCREMENT,
+roomname varchar(100) NOT NULL,
+PRIMARY KEY (id_room)
 );
 
-
-/* Create other tables and define schemas for them here! */
-DROP TABLE IF EXISTS 'users'
-CREATE TABLE `users`
+DROP TABLE IF EXISTS users;
+CREATE TABLE users
 (
-  `user_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `user_name` varChar(10),
-  `user_password` varChar(10),
+id_user int(10) NOT NULL AUTO_INCREMENT,
+username varchar(100) NOT NULL,
+PRIMARY KEY (id_user)
 );
 
-/*  Execute this file from the command line by typing:
- *    mysql < schema.sql
- *  to create the database and the tables.*/
-
-DROP TABLE IF EXISTS `messages`
+DROP TABLE IF EXISTS messages;
 CREATE TABLE messages
 (
-  `message_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `message_text` varChar(50),
-  `user_id` INT,
-  `room_id` INT,
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
-  FOREIGN KEY (room_id) REFERENCES rooms(room_id)
+id_message int(10) NOT NULL AUTO_INCREMENT,
+id_user int(10) NOT NULL,
+id_room int(10) NOT NULL,
+text varchar(100) NOT NULL,
+createdAt int(10) NOT NULL,
+PRIMARY KEY (id_message)
 );
 
-
-
-
-
-
-
-
-
--- INSERT INTO supportContacts
--- (roomName)
--- VALUES
--- ('Gar&Cel');
+ALTER TABLE `messages` ADD FOREIGN KEY (id_user) REFERENCES `users` (`id_user`);
+ALTER TABLE `messages` ADD FOREIGN KEY (id_room) REFERENCES `rooms` (`id_room`);
