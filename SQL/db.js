@@ -15,15 +15,12 @@ var dbConnection = mysql.createConnection({
 });
 
 dbConnection.connect(function(err){
-  // connected! (unless `err` is set);
   if (err){
     console.log('error connection: ' + err.stack);
   } else {
     console.log('connected');
   }
-}
-
-);
+});
 /* Now you can make queries to the Mysql database using the
  * dbConnection.query() method.
  * See https://github.com/felixge/node-mysql for more details about

@@ -1,5 +1,5 @@
 var app = {
-  server : 'https://127.0.0.1:3000/classes/messages',
+  server : '127.0.0.1:3000',
   currentuser : 'anonymous',
   roomname: 'lobby'
 };

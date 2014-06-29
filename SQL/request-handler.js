@@ -6,11 +6,14 @@
  * *Hint* Check out the node module documentation at http://nodejs.org/api/modules.html. */
 var db = require('db.js');
 
+
+
 var fs = require('fs');
 var exports = module.exports = {};
 var body = {};
 body.results = [];
 exports.handleRequest = function(request, response) {
+  debugger;
   /* the 'request' argument comes from nodes http module. It includes info about the
   request - such as what URL the browser is requesting. */
 
@@ -28,6 +31,11 @@ exports.handleRequest = function(request, response) {
   headers['Content-Type'] = "application/json";
   /* .writeHead() tells our server what HTTP status code to send back */
   // response.writeHead(statusCode, headers);
+
+  if (request.method === 'POST') {
+    console.log('post request received by server');
+  }
+
   if((request.url === '/classes/messages' || request.url === '/classes/room1') && request.method === 'GET'){
     response.writeHead(statusCode, headers);
 
@@ -38,6 +46,8 @@ exports.handleRequest = function(request, response) {
     response.end(JSON.stringify(body));
   }
  else if((request.url === '/classes/messages' || request.url === '/classes/room1') && request.method === 'POST'){
+    console.log('post request receivex by server');
+
     statusCode = 201;
     response.writeHead(statusCode, headers);
     request.on('data', function(data){
